@@ -1,0 +1,135 @@
+🔹 Kry Language Syntax Guide
+1️⃣ Variables
+
+Assign values with !!:
+
+@@ x !! 42       ;; integer
+@@ name !! `Lucy` ;; string
+@@ flag !! true  ;; boolean
+
+
+Variables start with @@
+
+Names are alphanumeric (underscores allowed)
+
+Strings use backticks: `text`
+
+2️⃣ Arithmetic
+
+Supports basic math operations:
+
+@@ a !! 10
+@@ b !! 5
+
+@@ sum !! a + b
+@@ diff !! a - b
+@@ prod !! a * b
+@@ div !! a / b
+@@ mod !! a % b
+
+3️⃣ Comparisons
+?? !! a == b { 
+    %% `Equal!` 
+}
+
+?? !! a != b { 
+    %% `Not equal!` 
+}
+
+?? !! a > b { ... }
+?? !! a < b { ... }
+
+
+==, !=, >, <
+
+Condition blocks are in { ... }
+
+4️⃣ Loops
+While-style loop:
+@@ i !! 0
+~~ {
+    %% i
+    @@ i !! i + 1
+    ?? !! i >= 5 { break }
+}
+
+
+~~ { ... } starts a loop
+
+break exits
+
+5️⃣ Functions
+@@ add !! func(a, b) {
+    @@ result !! a + b
+    return result
+}
+
+@@ total !! add(3, 4)
+%% total
+
+
+func(args) { ... } defines functions
+
+return sends value back
+
+6️⃣ File Operations
+@@ content !! file_read `file.txt`
+@@ success !! write_file `output.txt` content
+
+
+file_read → reads file contents
+
+write_file → writes to file
+
+7️⃣ Networking
+@@ host !! `127.0.0.1`
+@@ port !! 9000
+@@ sock !! tcp_connect host port
+@@ tcp_send sock `Hello world!`
+@@ reply !! tcp_recv sock
+
+
+tcp_connect → connect to server
+
+tcp_send → send data
+
+tcp_recv → receive data
+
+8️⃣ Printing
+%% `Hello, Kry!`
+%% variable_name
+
+
+%% prints a string or variable
+
+9️⃣ Comments
+;; This is a comment
+
+
+Double semicolons for single-line comments
+
+10️⃣ Boolean Logic
+@@ a !! true
+@@ b !! false
+
+?? !! (a && b) { ... }   ;; and
+?? !! (a || b) { ... }   ;; or
+?? !! (!a) { ... }       ;; not
+
+11️⃣ Example Script
+;; Simple loop and print
+@@ i !! 0
+~~ {
+    %% i
+    @@ i !! i + 1
+    ?? !! i >= 5 { break }
+}
+
+;; File write example
+@@ content !! `Hello Kry`
+@@ success !! write_file `demo.txt` content
+
+;; TCP send example
+@@ host !! `127.0.0.1`
+@@ sock !! tcp_connect host 9000
+@@ tcp_send sock content
